@@ -27,12 +27,12 @@ import { ChatGPTLLM } from "@graf-research/llm-runner";
 
 const chat_gpt_api_key = '<apikey>';
 const chatgpt = new ChatGPTLLM(chat_gpt_api_key);
-const session_id: string = 'sample-id';
+const session = await chatgpt.chat_session_manager.newSession();
 
-const response1: string = await chatgpt.ask(['Apa ibukota Indonesia?'], session_id);
+const response1: string = await chatgpt.ask(['Apa ibukota Indonesia?'], session.id);
 console.log(response1);
 
-const response2: string = await chatgpt.ask(['Apa yang saya tanyakan sebelumnya?'], session_id);
+const response2: string = await chatgpt.ask(['Apa yang saya tanyakan sebelumnya?'], session.id);
 console.log(response2);
 ```
 
@@ -172,9 +172,9 @@ response.stream((chunk: string, is_complete: boolean) => {
 import { ChatGPTLLM, LLMRunner } from "@graf-research/llm-runner";
 
 const llm: LLMRunner.BaseLLM = new ChatGPTLLM('<apikey>');
-const session_id = '1';
-const response1: string = await llm.ask(['Apa ibukota Indonesia?'], session_id);
-const response2: string = await llm.ask(['Apa yang saya tanyakan sebelumnya?'], session_id);
+const session = await llm.chat_session_manager.newSession();
+const response1: string = await llm.ask(['Apa ibukota Indonesia?'], session.id);
+const response2: string = await llm.ask(['Apa yang saya tanyakan sebelumnya?'], session.id);
 // response2 will remember conversation history/context
 ```
 
@@ -184,12 +184,12 @@ const response2: string = await llm.ask(['Apa yang saya tanyakan sebelumnya?'], 
 import { ChatGPTLLM, LLMRunner } from "@graf-research/llm-runner";
 
 const llm: LLMRunner.BaseLLM = new ChatGPTLLM('<apikey>');
-const session_id: string = 'sample-id';
+const session = await llm.chat_session_manager.newSession();
 
-const response1: GenericLLM.StreamResponse = await chatgpt.stream(['Jelaskan proses metamorfosis pada kupu-kupu'], session_id);
+const response1: GenericLLM.StreamResponse = await chatgpt.stream(['Jelaskan proses metamorfosis pada kupu-kupu'], session.id);
 response1.stream(async (chunk1: string, is_complete1: boolean) => {
   if (is_complete1) {
-    const response2: GenericLLM.StreamResponse = await chatgpt.stream(['Apa yang saya tanyakan sebelumnya?'], session_id);
+    const response2: GenericLLM.StreamResponse = await chatgpt.stream(['Apa yang saya tanyakan sebelumnya?'], session.id);
     response2.stream(async (chunk2: string, is_complete2: boolean) => {
       ...
     });
