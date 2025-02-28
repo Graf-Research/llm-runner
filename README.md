@@ -148,7 +148,7 @@ const llm: LLMRunner.BaseLLM = ollama;
 ```ts
 import { ChatGPTLLM, LLMRunner } from "@graf-research/llm-runner";
 
-const llm: LLMRunner.BaseLLM = new ChatGPTLLM('<apikey>');
+const llm: LLMRunner.BaseLLM = new ChatGPTLLM('<apikey>', 'gpt-4o-mini');
 const response: string = await llm.askNoContext(['Apa ibukota Indonesia?']);
 ```
 
@@ -157,7 +157,7 @@ const response: string = await llm.askNoContext(['Apa ibukota Indonesia?']);
 ```ts
 import { ChatGPTLLM, GenericLLM, LLMRunner } from "@graf-research/llm-runner";
 
-const llm: LLMRunner.BaseLLM = new ChatGPTLLM('<apikey>');
+const llm: LLMRunner.BaseLLM = new ChatGPTLLM('<apikey>', 'gpt-4o-mini');
 
 const response: GenericLLM.StreamResponse = await chatgpt.streamNoContext(['Jelaskan proses metamorfosis pada kupu-kupu']);
 response.stream((chunk: string, is_complete: boolean) => {
@@ -172,7 +172,7 @@ response.stream((chunk: string, is_complete: boolean) => {
 ```ts
 import { ChatGPTLLM, LLMRunner } from "@graf-research/llm-runner";
 
-const llm: LLMRunner.BaseLLM = new ChatGPTLLM('<apikey>');
+const llm: LLMRunner.BaseLLM = new ChatGPTLLM('<apikey>', 'gpt-4o-mini');
 const session = await llm.chat_session_manager.newSession();
 const response1: string = await llm.ask(['Apa ibukota Indonesia?'], session.id);
 const response2: string = await llm.ask(['Apa yang saya tanyakan sebelumnya?'], session.id);
@@ -184,7 +184,7 @@ const response2: string = await llm.ask(['Apa yang saya tanyakan sebelumnya?'], 
 ```ts
 import { ChatGPTLLM, LLMRunner } from "@graf-research/llm-runner";
 
-const llm: LLMRunner.BaseLLM = new ChatGPTLLM('<apikey>');
+const llm: LLMRunner.BaseLLM = new ChatGPTLLM('<apikey>', 'gpt-4o-mini');
 const session = await llm.chat_session_manager.newSession();
 
 const response1: GenericLLM.StreamResponse = await chatgpt.stream(['Jelaskan proses metamorfosis pada kupu-kupu'], session.id);
