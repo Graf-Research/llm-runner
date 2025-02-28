@@ -1,6 +1,9 @@
 import { LLMRunner } from "./base/llm-runner";
+
 import { ChatGPTLLM } from "./platform/chatgpt";
 import { OllamaLLM } from "./platform/ollama";
+import { AnthropicLLM } from "./platform/anthropic";
+
 import { GenericLLM } from "./base/generic-llm";
 import { MultistepTypes } from "./multistep/types";
 
@@ -14,8 +17,10 @@ import { MSModule_YesNo } from "./multistep/modules/yes-no";
 export {
   GenericLLM,
   LLMRunner,
+  
   ChatGPTLLM,
   OllamaLLM,
+  AnthropicLLM,
   
   MultistepTypes,
   

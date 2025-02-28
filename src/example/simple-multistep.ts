@@ -1,10 +1,11 @@
 import { ChatGPTLLM } from "../platform/chatgpt";
 import { MSModule_Choose } from '../multistep/modules/choose';
 import { MSModule_OpenListAnswer } from '../multistep/modules/open-list-answer';
+import { MSModule_YesNo } from "../multistep/modules/yes-no";
 
 // Waiting Mode
 export async function simpleMultistep(chat_gpt_api_key: string) {
-  const chatgpt = new ChatGPTLLM(chat_gpt_api_key);
+  const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
 
   const q1 = 'Saya sedang berada di tempat banyak orang mengantri untuk menyimpan uang';
   const q1_options = ['Bank BCA', 'Istana Negara', 'POM Bensin'];
@@ -16,6 +17,7 @@ export async function simpleMultistep(chat_gpt_api_key: string) {
 
   // a1 berisi jawaban dari pilihan q1_options yang paling mendekati
   const a1: string = await MSModule_Choose.ask(chatgpt, q1, q1_options);
+  
   console.log(a1);
   console.log('<q1 selesai>');
   console.log('\n');

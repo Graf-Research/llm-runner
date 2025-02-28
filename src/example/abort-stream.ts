@@ -3,7 +3,7 @@ import { ChatGPTLLM } from "../platform/chatgpt";
 
 // Stream Mode
 export async function abortStream(chat_gpt_api_key: string) {
-  const chatgpt = new ChatGPTLLM(chat_gpt_api_key);
+  const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
   const ac = new AbortController();
 
   setTimeout(() => {

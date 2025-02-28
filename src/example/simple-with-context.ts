@@ -3,7 +3,7 @@ import { ChatGPTLLM } from "../platform/chatgpt";
 
 // Waiting Mode
 export async function simpleWithContext(chat_gpt_api_key: string) {
-  const chatgpt = new ChatGPTLLM(chat_gpt_api_key);
+  const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
 
   const session_id: string = 'sample-id';
   
@@ -16,7 +16,7 @@ export async function simpleWithContext(chat_gpt_api_key: string) {
 
 // Stream Mode
 export async function simpleWithContext_stream(chat_gpt_api_key: string) {
-  const chatgpt = new ChatGPTLLM(chat_gpt_api_key);
+  const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
 
   const session_id: string = 'sample-id';
   

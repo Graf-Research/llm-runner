@@ -15,12 +15,12 @@ export namespace MSModule_Choose {
   }
   
   export async function ask(llm: LLMRunner.BaseLLM, q: string, options: string[], session_id?: string): Promise<string> {
-    const prompt = `Respond this question: ${q}, choose the closest answer from: ${options.map(a => `"${a}"`).join(',')}. Answer with only one option, even when multiple answer is available`;
+    const prompt = `Respond this question: ${q}, choose the closest answer from: ${options.map(a => `"${a}"`).join(',')}. Answer with only one option, even when multiple answer is available, answer without quote symbol`;
     return await MultistepWrapper.ask(llm, prompt, generateChooseResolver(options), session_id);
   }
 
   export async function stream(llm: LLMRunner.BaseLLM, q: string, options: string[], session_id?: string): Promise<MultistepTypes.StreamResponseWithFinalAnswer<string>> {
-    const prompt = `Respond this question: ${q}, choose the closest answer from: ${options.map(a => `"${a}"`).join(',')}. Answer with only one option, even when multiple answer is available`;
+    const prompt = `Respond this question: ${q}, choose the closest answer from: ${options.map(a => `"${a}"`).join(',')}. Answer with only one option, even when multiple answer is available, answer without quote symbol`;
     return await MultistepWrapper.stream(llm, prompt, generateChooseResolver(options), session_id);
   }
 }

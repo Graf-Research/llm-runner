@@ -6,7 +6,7 @@ import { MultistepTypes } from '../multistep/types';
 
 // Stream Mode
 export async function simpleMultistepWithStream(chat_gpt_api_key: string) {
-  const chatgpt = new ChatGPTLLM(chat_gpt_api_key);
+  const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
 
   const stream = new Readable({ objectMode: true, read() {} });
 

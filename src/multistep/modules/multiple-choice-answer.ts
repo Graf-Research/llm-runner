@@ -13,12 +13,12 @@ export namespace MSModule_MultipleChoiceAnswer {
   }
   
   export async function ask(llm: LLMRunner.BaseLLM, q: string, options: string[], session_id?: string): Promise<string[]> {
-    const prompt = `Respond this question: ${q}, choose one or more from this options as answer: ${options.map(a => `"${a}"`).join(',')}. Put all the answers into one line each. Don't make up an answer, only choose from available options`;
+    const prompt = `Respond this question: ${q}, choose one or more from this options as answer: ${options.map(a => `"${a}"`).join(',')}. Put all the answers into one line each. Don't make up an answer, only choose from available options, answer without quote symbol`;
     return await MultistepWrapper.ask(llm, prompt, generateMultipleChoiceAnswerResolver(options), session_id);
   }
 
   export async function stream(llm: LLMRunner.BaseLLM, q: string, options: string[], session_id?: string): Promise<MultistepTypes.StreamResponseWithFinalAnswer<string[]>> {
-    const prompt = `Respond this question: ${q}, choose one or more from this options as answer: ${options.map(a => `"${a}"`).join(',')}. Put all the answers into one line each. Don't make up an answer, only choose from available options`;
+    const prompt = `Respond this question: ${q}, choose one or more from this options as answer: ${options.map(a => `"${a}"`).join(',')}. Put all the answers into one line each. Don't make up an answer, only choose from available options, answer without quote symbol`;
     return await MultistepWrapper.stream(llm, prompt, generateMultipleChoiceAnswerResolver(options), session_id);
   }
 }

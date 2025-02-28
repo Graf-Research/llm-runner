@@ -3,17 +3,19 @@ import { LLMRunner } from "../base/llm-runner";
 import { GenericLLM } from "../base/generic-llm";
 import { Message } from "ollama";
 import { Readable } from 'node:stream';
-import { ChatCompletionMessageParam } from "openai/resources";
+import { ChatCompletionMessageParam, ChatModel as ChatGPTModel } from "openai/resources";
 
 /**
  * Chat GPT Implementation
  */
 export class ChatGPTLLM extends LLMRunner.BaseLLM {
   private cgpt: OpenAI;
+  private model: ChatGPTModel;
 
-  public constructor(api_key: string, chat_session_manager?: GenericLLM.ChatSessionManager<LLMRunner.ChatSession, LLMRunner.Message>) {
+  public constructor(api_key: string, model: ChatGPTModel, chat_session_manager?: GenericLLM.ChatSessionManager<LLMRunner.ChatSession, LLMRunner.Message>) {
     super(chat_session_manager ?? new LLMRunner.SessionManager());
     this.cgpt = new OpenAI({ apiKey: api_key });
+    this.model = model;
   }
 
   protected async streamChat(messages: string[], id_session: string | null, stream: Readable, ac: AbortController): Promise<void> {
@@ -29,7 +31,7 @@ export class ChatGPTLLM extends LLMRunner.BaseLLM {
     }
 
     const cgpt_stream = await this.cgpt.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: this.model,
       store: false,
       stream: true,
       n: 1,
@@ -57,7 +59,7 @@ export class ChatGPTLLM extends LLMRunner.BaseLLM {
     ];
 
     const res = await this.cgpt.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: this.model,
       store: false,
       n: 1,
       messages: chat_messages
