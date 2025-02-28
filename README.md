@@ -16,7 +16,7 @@ npm install --save @graf-research/llm-runner
 import { ChatGPTLLM } from "@graf-research/llm-runner";
 
 const chat_gpt_api_key = '<apikey>';
-const chatgpt = new ChatGPTLLM(chat_gpt_api_key);
+const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
 const response: string = await chatgpt.askNoContext(['Apa ibukota Indonesia?']);
 ```
 
@@ -26,7 +26,7 @@ const response: string = await chatgpt.askNoContext(['Apa ibukota Indonesia?']);
 import { ChatGPTLLM } from "@graf-research/llm-runner";
 
 const chat_gpt_api_key = '<apikey>';
-const chatgpt = new ChatGPTLLM(chat_gpt_api_key);
+const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
 const session = await chatgpt.chat_session_manager.newSession();
 
 const response1: string = await chatgpt.ask(['Apa ibukota Indonesia?'], session.id);
@@ -42,7 +42,7 @@ console.log(response2);
 import { ChatGPTLLM, MSModule_Choose, MSModule_OpenListAnswer } from "@graf-research/llm-runner";
 
 const chat_gpt_api_key = '<apikey>';
-const chatgpt = new ChatGPTLLM(chat_gpt_api_key);
+const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
 
 const q1 = 'Saya sedang berada di tempat banyak orang mengantri untuk menyimpan uang';
 const q1_options = ['Bank BCA', 'Istana Negara', 'POM Bensin'];
@@ -64,7 +64,7 @@ if (a1 === 'Bank BCA') {
 import { ChatGPTLLM, GenericLLM } from "@graf-research/llm-runner";
 
 const chat_gpt_api_key = '<apikey>';
-const chatgpt = new ChatGPTLLM(chat_gpt_api_key);
+const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
 
 const response: GenericLLM.StreamResponse = await chatgpt.streamNoContext(['Jelaskan proses metamorfosis pada kupu-kupu']);
 response.stream((chunk: string, is_complete: boolean) => {
@@ -85,7 +85,7 @@ response.stream((chunk: string, is_complete: boolean) => {
 ```ts
 import { ChatGPTLLM, MultistepTypes, MSModule_Choose, MSModule_OpenListAnswer } from "@graf-research/llm-runner";
 
-const chatgpt = new ChatGPTLLM(chat_gpt_api_key);
+const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
 const stream = new Readable({ objectMode: true, read() {} });
 
 const q1 = 'Saya sedang berada di tempat banyak orang mengantri untuk menyimpan uang';
@@ -346,7 +346,7 @@ Pada umumnya stream yang terlalu panjang kadang harus diberhentikan karena suatu
 ```ts
 import { ChatGPTLLM, GenericLLM } from "@graf-research/llm-runner";
 
-const chatgpt = new ChatGPTLLM(chat_gpt_api_key);
+const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
 
 // 1. Siapkan Abort Controller
 const ac = new AbortController();
