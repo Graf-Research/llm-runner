@@ -1,6 +1,6 @@
 {
   "name": "@graf-research/llm-runner",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && tsc",
@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.38.0",
+    "@google/generative-ai": "^0.22.0",
     "lodash": "^4.17.21",
     "ollama": "^0.5.13",
     "openai": "^4.85.3",
