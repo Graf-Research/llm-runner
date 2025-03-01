@@ -13,12 +13,12 @@ npm install --save @graf-research/llm-runner
 ```ts
 import { ChatGPTLLM, OllamaLLM, AnthropicLLM, LLMRunner } from "@graf-research/llm-runner";
 
-const chatgpt: LLMRunner.BaseLLM = new ChatGPTLLM('apikey', 'gpt-4o-mini');
-const ollama: LLMRunner.BaseLLM = new OllamaLLM('http://my-ollama-server', 'deepseek-r1:8b');
-const anthropic: LLMRunner.BaseLLM = new AnthropicLLM('apikey', 'claude-3-opus-latest');
-const gemini: LLMRunner.BaseLLM = new GeminiLLM(gemini_api_key, 'gemini-1.5-flash');
+const chatgpt: LLMRunner.BaseLLM = new ChatGPTLLM('apikey', '<chatgpt model>');
+const ollama: LLMRunner.BaseLLM = new OllamaLLM('http://my-ollama-server', '<ollama model>');
+const anthropic: LLMRunner.BaseLLM = new AnthropicLLM('apikey', '<anthropic model>');
+const gemini: LLMRunner.BaseLLM = new GeminiLLM('apikey', '<gemini model>');
 
-// different platform implemented on but same signature BaseLLM class
+// different platform implementation but same signature BaseLLM class
 const llm: LLMRunner.BaseLLM = ollama;
 ```
 
@@ -148,9 +148,9 @@ import { ChatGPTLLM, OllamaLLM, AnthropicLLM, LLMRunner } from "@graf-research/l
 const chatgpt: LLMRunner.BaseLLM = new ChatGPTLLM('apikey', 'gpt-4o-mini');
 const ollama: LLMRunner.BaseLLM = new OllamaLLM('http://my-ollama-server', 'deepseek-r1:8b');
 const anthropic: LLMRunner.BaseLLM = new AnthropicLLM('apikey', 'claude-3-opus-latest');
-const gemini: LLMRunner.BaseLLM = new GeminiLLM(gemini_api_key, 'gemini-1.5-flash');
+const gemini: LLMRunner.BaseLLM = new GeminiLLM('apikey', 'gemini-1.5-flash');
 
-// different platform implemented on but same signature BaseLLM class
+// different platform implementation but same signature BaseLLM class
 const llm: LLMRunner.BaseLLM = ollama;
 ```
 
