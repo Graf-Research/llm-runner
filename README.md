@@ -8,6 +8,20 @@ Sebuah alternatif untuk mengutilisasi LLM ke programming NodeJS/Javascript. Dide
 npm install --save @graf-research/llm-runner
 ```
 
+## Supported LLM
+
+```ts
+import { ChatGPTLLM, OllamaLLM, AnthropicLLM, LLMRunner } from "@graf-research/llm-runner";
+
+const chatgpt: LLMRunner.BaseLLM = new ChatGPTLLM('apikey', 'gpt-4o-mini');
+const ollama: LLMRunner.BaseLLM = new OllamaLLM('http://my-ollama-server', 'deepseek-r1:8b');
+const anthropic: LLMRunner.BaseLLM = new AnthropicLLM('apikey', 'claude-3-opus-latest');
+const gemini: LLMRunner.BaseLLM = new GeminiLLM(gemini_api_key, 'gemini-1.5-flash');
+
+// different platform implemented on but same signature BaseLLM class
+const llm: LLMRunner.BaseLLM = ollama;
+```
+
 ## Example
 
 #### Simple
@@ -134,6 +148,7 @@ import { ChatGPTLLM, OllamaLLM, AnthropicLLM, LLMRunner } from "@graf-research/l
 const chatgpt: LLMRunner.BaseLLM = new ChatGPTLLM('apikey', 'gpt-4o-mini');
 const ollama: LLMRunner.BaseLLM = new OllamaLLM('http://my-ollama-server', 'deepseek-r1:8b');
 const anthropic: LLMRunner.BaseLLM = new AnthropicLLM('apikey', 'claude-3-opus-latest');
+const gemini: LLMRunner.BaseLLM = new GeminiLLM(gemini_api_key, 'gemini-1.5-flash');
 
 // different platform implemented on but same signature BaseLLM class
 const llm: LLMRunner.BaseLLM = ollama;
