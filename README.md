@@ -164,7 +164,15 @@ const llm: LLMRunner.BaseLLM = ollama;
 import { ChatGPTLLM, LLMRunner } from "@graf-research/llm-runner";
 
 const llm: LLMRunner.BaseLLM = new ChatGPTLLM('<apikey>', 'gpt-4o-mini');
-const response: string = await llm.askNoContext(['Apa ibukota Indonesia?']);
+
+// pass string
+const response: string = await llm.askNoContext('Apa ibukota Indonesia?');
+
+// pass array of string
+const response: string = await llm.askNoContext([
+  'Saya sedang berada di Indonesia',
+  'apa ibukota negara tersebut?'
+]);
 ```
 
 *With Stream*
@@ -174,6 +182,7 @@ import { ChatGPTLLM, GenericLLM, LLMRunner } from "@graf-research/llm-runner";
 
 const llm: LLMRunner.BaseLLM = new ChatGPTLLM('<apikey>', 'gpt-4o-mini');
 
+// can pass string or array of string
 const response: GenericLLM.StreamResponse = await chatgpt.streamNoContext(['Jelaskan proses metamorfosis pada kupu-kupu']);
 response.stream((chunk: string, is_complete: boolean) => {
   ...

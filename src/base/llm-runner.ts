@@ -59,7 +59,8 @@ export namespace LLMRunner {
    * Abstract Base LLM Class
    */
   export abstract class BaseLLM extends GenericLLM.BaseLLM<ChatSession, Message>  {
-    public async stream(messages: string[], id_session: string): Promise<GenericLLM.StreamResponse> {
+    public async stream(message_data: string[] | string, id_session: string): Promise<GenericLLM.StreamResponse> {
+      const messages: string[] = Array.isArray(message_data) ? message_data : [message_data];
       const ac = new AbortController();
       const stream = new Readable({ objectMode: true, read() {} })
       this.streamChat(messages, id_session, stream, ac);
@@ -81,7 +82,8 @@ export namespace LLMRunner {
       }
     }
 
-    public async streamNoContext(messages: string[]): Promise<GenericLLM.StreamResponse> {
+    public async streamNoContext(message_data: string[] | string): Promise<GenericLLM.StreamResponse> {
+      const messages: string[] = Array.isArray(message_data) ? message_data : [message_data];
       const ac = new AbortController();
       const stream = new Readable({ objectMode: true, read() {} })
       this.streamChat(messages, null, stream, ac);
@@ -101,7 +103,8 @@ export namespace LLMRunner {
       }
     }
 
-    public async ask(messages: string[], id_session: string): Promise<string> {
+    public async ask(message_data: string[] | string, id_session: string): Promise<string> {
+      const messages: string[] = Array.isArray(message_data) ? message_data : [message_data];
       const res = await this.chat(messages, id_session);
 
       await this.chat_session_manager.saveMessage(messages, 'user', id_session);
@@ -110,7 +113,8 @@ export namespace LLMRunner {
       return res;
     }
 
-    public async askNoContext(messages: string[]): Promise<string> {
+    public async askNoContext(message_data: string[] | string): Promise<string> {
+      const messages: string[] = Array.isArray(message_data) ? message_data : [message_data];
       return await this.chat(messages, null);
     }
   }
