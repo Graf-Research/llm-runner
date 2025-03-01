@@ -33,10 +33,10 @@ const chat_gpt_api_key = '<apikey>';
 const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
 
 // pass string
-const response: string = await llm.askNoContext('Apa ibukota Indonesia?');
+const response: string = await chatgpt.askNoContext('Apa ibukota Indonesia?');
 
 // pass array of string
-const response: string = await llm.askNoContext([
+const response: string = await chatgpt.askNoContext([
   'Saya sedang berada di Indonesia',
   'apa ibukota negara tersebut?'
 ]);
