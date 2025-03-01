@@ -11,7 +11,7 @@ npm install --save @graf-research/llm-runner
 ## Supported LLM
 
 ```ts
-import { ChatGPTLLM, OllamaLLM, AnthropicLLM, LLMRunner } from "@graf-research/llm-runner";
+import { ChatGPTLLM, OllamaLLM, AnthropicLLM, GeminiLLM, LLMRunner } from "@graf-research/llm-runner";
 
 const chatgpt: LLMRunner.BaseLLM = new ChatGPTLLM('apikey', '<chatgpt model>');
 const ollama: LLMRunner.BaseLLM = new OllamaLLM('http://my-ollama-server', '<ollama model>');
