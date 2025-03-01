@@ -31,7 +31,15 @@ import { ChatGPTLLM } from "@graf-research/llm-runner";
 
 const chat_gpt_api_key = '<apikey>';
 const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
-const response: string = await chatgpt.askNoContext(['Apa ibukota Indonesia?']);
+
+// pass string
+const response: string = await llm.askNoContext('Apa ibukota Indonesia?');
+
+// pass array of string
+const response: string = await llm.askNoContext([
+  'Saya sedang berada di Indonesia',
+  'apa ibukota negara tersebut?'
+]);
 ```
 
 #### Simple w/ Context
@@ -80,6 +88,7 @@ import { ChatGPTLLM, GenericLLM } from "@graf-research/llm-runner";
 const chat_gpt_api_key = '<apikey>';
 const chatgpt = new ChatGPTLLM(chat_gpt_api_key, 'gpt-4o-mini');
 
+// can pass string or array of string
 const response: GenericLLM.StreamResponse = await chatgpt.streamNoContext(['Jelaskan proses metamorfosis pada kupu-kupu']);
 response.stream((chunk: string, is_complete: boolean) => {
   if (!is_complete) {
