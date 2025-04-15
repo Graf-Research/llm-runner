@@ -4,6 +4,8 @@ import { ChatGPTLLM } from "./platform/chatgpt";
 import { OllamaLLM } from "./platform/ollama";
 import { AnthropicLLM } from "./platform/anthropic";
 import { GeminiLLM } from "./platform/gemini";
+import { DeepseekLLM } from "./platform/deepseek";
+import { GrokLLM } from "./platform/grok";
 
 import { GenericLLM } from "./base/generic-llm";
 import { MultistepTypes } from "./multistep/types";
@@ -23,6 +25,8 @@ export {
   OllamaLLM,
   AnthropicLLM,
   GeminiLLM,
+  DeepseekLLM,
+  GrokLLM,
   
   MultistepTypes,
   
