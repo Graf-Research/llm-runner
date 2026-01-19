@@ -9,10 +9,10 @@ export namespace GenericLLM {
   }
 
   export abstract class ChatSessionManager<SessionModel, ChatModel> {
-    public abstract newSession(): Promise<SessionModel>;
-    public abstract getChatSession(id_session: string): Promise<SessionModel>
-    public abstract saveMessage(messages: string[], role: string, id_session: string): Promise<void>
-    public abstract retrieveHistory(id_session: string): Promise<ChatModel[]>
+    public abstract newSession(): SessionModel;
+    public abstract getChatSession(id_session: string): SessionModel
+    public abstract saveMessage(messages: string[], role: string, id_session: string): void
+    public abstract retrieveHistory(id_session: string): ChatModel[]
   }
 
   export abstract class GenericLLM {

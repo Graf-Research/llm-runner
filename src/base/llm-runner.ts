@@ -19,7 +19,7 @@ export namespace LLMRunner {
   export class SessionManager implements GenericLLM.ChatSessionManager<ChatSession, Message> {
     public list_session: ChatSession[] = [];
 
-    public async newSession(): Promise<ChatSession> {
+    public newSession(): ChatSession {
       const session = {
         id: v4(),
         list_message: []
@@ -29,11 +29,11 @@ export namespace LLMRunner {
       return session;
     }
 
-    public async getSession(id_session: string): Promise<ChatSession | undefined> {
+    public getSession(id_session: string): ChatSession | undefined {
       return this.list_session.find(s => s.id == id_session);
     }
 
-    public async getChatSession(id_session: string): Promise<ChatSession> {
+    public getChatSession(id_session: string): ChatSession {
       const cs = this.list_session.find(s => s.id == id_session);
       if (!cs) {
         throw new Error('Session not found.');
@@ -41,16 +41,16 @@ export namespace LLMRunner {
       return cs;
     }
 
-    public async saveMessage(messages: string[], role: string, id_session: string): Promise<void> {
-      const cs = await this.getChatSession(id_session);
+    public saveMessage(messages: string[], role: string, id_session: string): void {
+      const cs = this.getChatSession(id_session);
       cs.list_message.push(...messages.map(content => ({
         role,
         content
       })));
     }
 
-    public async retrieveHistory(id_session: string): Promise<Message[]> {
-      const cs = await this.getChatSession(id_session);
+    public retrieveHistory(id_session: string): Message[] {
+      const cs = this.getChatSession(id_session);
       return cs.list_message
     }
   }

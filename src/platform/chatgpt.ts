@@ -12,9 +12,9 @@ export class ChatGPTLLM extends LLMRunner.BaseLLM {
   private cgpt: OpenAI;
   private model: ChatGPTModel;
 
-  public constructor(api_key: string, model: ChatGPTModel, chat_session_manager?: GenericLLM.ChatSessionManager<LLMRunner.ChatSession, LLMRunner.Message>) {
+  public constructor(api_key: string, model: ChatGPTModel, chat_session_manager?: GenericLLM.ChatSessionManager<LLMRunner.ChatSession, LLMRunner.Message>, baseURL?: string) {
     super(chat_session_manager ?? new LLMRunner.SessionManager());
-    this.cgpt = new OpenAI({ apiKey: api_key });
+    this.cgpt = new OpenAI({ apiKey: api_key, baseURL });
     this.model = model;
   }
 
